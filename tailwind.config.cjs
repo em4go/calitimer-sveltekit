@@ -6,6 +6,10 @@ module.exports = {
 			fontFamily: {
 				roboto: "'Roboto', sans-serif",
 				teko: "'Teko', sans-serif"
+			},
+			screens: {
+				xs: '460px',
+				xxs: '380px'
 			}
 		}
 	}
