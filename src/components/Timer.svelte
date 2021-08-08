@@ -1,17 +1,20 @@
 <script>
+	export let timerText = '01:10';
+
 	let svgHeight = 280;
-	export let percentage = 75;
+	export let percentage = 0;
 	export let colors = { c1: '#344568', c2: '#83D9C1', c3: '#D84F50' };
+
 	$: radius = svgHeight / 2 - 20;
 	$: radiusInner = radius - 20;
 	$: circunference = radius * Math.PI * 2;
 	$: circunferenceInner = radiusInner * Math.PI * 2;
-	$: dashoffset = circunference - (circunference * percentage) / 100;
+	$: dashoffset = circunference - (circunference * 0) / 100;
 	$: dashoffsetInner = circunferenceInner - (circunferenceInner * percentage) / 100;
 	$: textWidth = Math.sqrt(2 * Math.pow(radiusInner, 2)) - 10;
 </script>
 
-<div class="timer relative w-10/12 mx-auto flex items-center justify-center">
+<div class="timer relative w-10/12 mx-auto flex items-center justify-center" on:click>
 	<div
 		bind:clientWidth={svgHeight}
 		class="svg-wrapper w-full mx-auto flex items-center justify-center -rotate-90"
@@ -30,15 +33,14 @@
 				cx={svgHeight / 2}
 				cy={svgHeight / 2}
 				r={radius}
-				style="--percentage: {percentage}; --color: {colors.c2}; --circunference: {circunference}; --dashoffset: {dashoffset}"
+				style=" --color: {colors.c2}; --circunference: {circunference}; --dashoffset: {dashoffset}"
 			/>
 			<circle
 				class="circle circle-3"
 				cx={svgHeight / 2}
 				cy={svgHeight / 2}
 				r={radiusInner}
-				style="--percentage: {percentage /
-					2}; --color: {colors.c3}; --circunference: {circunferenceInner}; --dashoffset: {dashoffsetInner}"
+				style=" --color: {colors.c3}; --circunference: {circunferenceInner}; --dashoffset: {dashoffsetInner}"
 			/>
 		</svg>
 	</div>
@@ -51,7 +53,7 @@
 		</div>
 		<div class="w-full h-1/4 flex justify-around items-end">
 			<p class="text-3xl xxs:text-4xl font-teko">x10</p>
-			<p class="text-3xl xxs:text-4xl font-teko">00:19</p>
+			<p class="text-3xl xxs:text-4xl font-teko">{timerText}</p>
 		</div>
 	</div>
 </div>
